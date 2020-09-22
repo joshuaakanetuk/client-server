@@ -1,0 +1,10 @@
+insert into notes (content, type, date_created, project_id, created_by) values ('Uraeginthus granatina', 'feedback', '2020-01-29 01:33:42', 2, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Antilope cervicapra', 'note', '2020-01-04 23:35:55', 2, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Butorides striatus', 'changelog', '2019-11-07 09:52:40', 2, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Haematopus ater', 'changelog', '2019-10-01 05:08:50', 2, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Ciconia episcopus', 'note', '2019-11-08 01:52:11', 1, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Paradoxurus hermaphroditus', 'note', '2020-05-07 07:41:52', 1, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Dicrostonyx groenlandicus', 'changelog', '2020-02-18 21:04:39', 1, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Ammospermophilus nelsoni', 'feedback', '2019-10-04 07:53:04', 2, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Trichoglossus haematodus moluccanus', 'note', '2019-12-12 19:00:01', 1, 'client');
+insert into notes (content, type, date_created, project_id, created_by) values ('Macaca fuscata', 'changelog', '2019-11-29 01:51:56', 2, 'client');
