@@ -113,25 +113,17 @@ projectsRouter
       price,
       proposal,
       date_created,
-      date_modified,
-      approval,
+      date_modified
     };
 
-    const numberOfValues = Object.values(keys).filter(Boolean).length;
-    if (numberOfValues === 0) {
-      return res.status(400).json({
-        error: {
-          message: `Request body must contain one of the following: ${Object.keys(
-            keys
-          ).join(", ")}`,
-        },
-      });
-    }
+   
 
     newProject = keys;
 
+
     if (typeof approval != "undefined") {
       project[req.user.type + "_approval"] = approval;
+      newProject[req.user.type + "_approval"] = project[req.user.type + "_approval"]
     }
     if (project.status === "INITIAL" || project.status === "DESIGN") {
       if (!approval) {
@@ -155,18 +147,33 @@ projectsRouter
       }
     }
 
+    console.log(newProject)
+
+    const numberOfValues = Object.values(keys).filter(Boolean).length;
+    if (numberOfValues === 0) {
+      return res.status(400).json({
+        error: {
+          message: `Request body must contain one of the following: ${Object.keys(
+            keys
+          ).join(", ")}`,
+        },
+      });
+    }
+
     // removes superfluous keys
     Object.keys(newProject).forEach((key) =>
       newProject[key] === undefined ? delete newProject[key] : {}
     );
 
+
+    console.log(newProject)
     ProjectsService.updateProject(
       req.app.get("db"),
       req.params.project_id,
       newProject
     )
-      .then((project) => {
-        res.status(202).json(project);
+      .then((pp) => {
+        res.json(pp);
       })
       .catch(next);
   });
@@ -183,16 +190,25 @@ projectsRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    NotesService.insertNote(req.app.get("db"), req.body)
-      .then((notes) => {
-        res.status(201).json(notes);
-      })
-      .catch(next);
+    if (req.body.content.length > 0) {
+      
+      req.body.created_by = req.user.id;
+      console.log(req.body)
+      NotesService.insertNote(req.app.get("db"), req.body)
+        .then((notes) => {
+          console.log(notes)
+          res.status(201).json(notes);
+        })
+        .catch(next);
+    }
+    else {
+      res.status(204).send()
+    }
   })
   .delete(jsonParser, (req, res, next) => {
-    NotesService.deleteNote(req.app.get("db"), req.body.note_id)
+    NotesService.deleteNote(req.app.get("db"), req.body._note)
       .then((notes) => {
-        res.status(204).send;
+        res.status(204).send();
       })
       .catch(next);
   });
