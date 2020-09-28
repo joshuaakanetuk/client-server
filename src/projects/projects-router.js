@@ -35,7 +35,6 @@ projectsRouter
       type,
       price,
       date_created,
-      date_modified,
       deliverables,
     } = req.body;
     const newProject = {
@@ -48,7 +47,6 @@ projectsRouter
       type,
       price,
       date_created,
-      date_modified,
       deliverables,
       proposal: "",
       user_id: req.user.id,
@@ -97,7 +95,6 @@ projectsRouter
       price,
       proposal,
       date_created,
-      date_modified,
       approval,
     } = req.body;
     let newProject = {};
@@ -113,7 +110,6 @@ projectsRouter
       price,
       proposal,
       date_created,
-      date_modified
     };
 
    
@@ -149,6 +145,8 @@ projectsRouter
 
     console.log(newProject)
 
+    // Checking submitted object for length, user type
+
     const numberOfValues = Object.values(keys).filter(Boolean).length;
     if (numberOfValues === 0) {
       return res.status(400).json({
@@ -159,6 +157,14 @@ projectsRouter
         },
       });
     }
+
+    if(req.user.type === 'client' && proposal) {
+      return res.status(400).json({
+        error: {
+          message: `Client cannot edit proposal url.`
+        },
+      });
+     }
 
     // removes superfluous keys
     Object.keys(newProject).forEach((key) =>
@@ -191,9 +197,11 @@ projectsRouter
   })
   .post(jsonParser, (req, res, next) => {
     if (req.body.content.length > 0) {
-      
       req.body.created_by = req.user.id;
-      console.log(req.body)
+
+    if (req.body.type === 'changelog')
+      req.body.content = req.user.full_name + " " + req.body.content
+
       NotesService.insertNote(req.app.get("db"), req.body)
         .then((notes) => {
           console.log(notes)

@@ -4,6 +4,6 @@ CREATE TABLE notes (
   type TEXT NOT NULL,
   date_created TIMESTAMPTZ,
   created_by TEXT NOT NULL,
-  project_id TEXT
+  project_id TEXT NOT NULL
     REFERENCES projects(id)
 );
