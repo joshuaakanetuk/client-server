@@ -52,12 +52,20 @@ projectsRouter
       user_id: req.user.id,
     };
 
+    // console.log(end_timeframe)
+
     for (const [key, value] of Object.entries(newProject)) {
-      if (value == null) {
+      if (value == null || value == undefined) {
         return res.status(400).json({
           error: { message: `Missing '${key}' in request body` },
         });
       }
+    }
+
+    if (!(new Date(end_timeframe) > new Date())) {
+      return res.status(400).json({
+        error: { message: `Invalid date for project.` },
+      });
     }
 
     ProjectsService.insertProject(req.app.get("db"), newProject)
