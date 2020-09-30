@@ -52,7 +52,6 @@ projectsRouter
       user_id: req.user.id,
     };
 
-    // console.log(end_timeframe)
 
     for (const [key, value] of Object.entries(newProject)) {
       if (value == null || value == undefined) {
@@ -149,8 +148,6 @@ projectsRouter
       }
     }
 
-    console.log(newProject);
-
     // Checking submitted object for length, user type
 
     const numberOfValues = Object.values(keys).filter(Boolean).length;
@@ -177,7 +174,6 @@ projectsRouter
       newProject[key] === undefined ? delete newProject[key] : {}
     );
 
-    console.log(newProject);
     ProjectsService.updateProject(
       req.app.get("db"),
       req.params.project_id,
@@ -209,7 +205,6 @@ projectsRouter
 
       NotesService.insertNote(req.app.get("db"), req.body)
         .then((notes) => {
-          console.log(notes);
           res.status(201).json(notes);
         })
         .catch(next);
