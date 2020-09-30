@@ -1,10 +1,6 @@
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('gleaming0', 'Divavu', 'askill0@friendfeed.com', 'B82bsVuqOF0F', '2020-05-30 22:03:09', '2019-12-24 08:56:42', 'client');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('qclues1', 'Jabberbean', 'challmark1@vistaprint.com', 'X5TjfrKz6hw', '2020-05-10 15:25:29', '2019-12-11 00:46:32', 'client');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('mreith2', 'Aimbu', 'jtembridge2@usa.gov', '7sLTTj0', '2020-08-13 18:46:29', '2020-08-23 23:18:52', 'admin');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('epreedy3', 'Skalith', 'lmcquillan3@ycombinator.com', 'IROrwvpc', '2020-08-23 22:03:35', '2020-08-19 22:52:08', 'client');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('anolte4', 'Skyvu', 'njedrych4@histats.com', 'RGKyfjvSktN', '2020-08-01 01:13:54', '2020-07-29 17:31:30', 'admin');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('bmedeway5', 'Layo', 'vdils5@samsung.com', 'CgvbTSWB0Y', '2020-05-23 20:16:13', '2020-01-22 02:08:10', 'client');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('cbletsoe6', 'Geba', 'cstickler6@samsung.com', 'gRltJJRzX', '2020-08-13 09:38:20', '2020-04-09 01:59:11', 'admin');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('clovekin7', 'Oyoyo', 'coakinfold7@canalblog.com', '91d1KDi2W5', '2020-05-21 02:37:51', '2019-10-11 00:54:34', 'admin');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('gburrell8', 'Zoozzy', 'deberdt8@photobucket.com', 'oQpB1G0V', '2020-05-09 22:46:48', '2020-01-05 11:24:39', 'client');
-insert into users (user_name, full_name, email, password, date_created, date_modified, type) values ('gpandie9', 'Devbug', 'rbrinicombe9@com.com', 'NfchZc', '2020-05-03 06:42:37', '2020-06-16 21:38:55', 'admin');
+INSERT INTO users
+(user_name, full_name, email, "password", date_created, "type")
+VALUES('admin', 'I''m Admin', 'admin@gmail.com', '$2a$12$QJcf6XBE4dl1pgVZcY2chelGnFEdV81ba8O80oY/7E4NXWEexZ0Iq', '2020-09-21 22:02:48.498', 'admin');
+INSERT INTO users
+(user_name, full_name, email, "password", date_created, "type")
+VALUES('client', 'I''m Client', 'client@gmail.com', '$2a$12$fzHL0beBygsto9lqSj7QZOjfv9BSBJtYH/cabuKjDNcIAb6aSf5Ta', '2020-09-22 06:13:52.441', 'client');

@@ -1,5 +1,24 @@
-insert into projects (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id) values ('Pacific False Buttonweed', 'PROGRESS', 'Post Deployment Support', false, false, '2020-11-09 11:28:17', 'Online Store', '217.04', null, '2020-12-01 06:11:47', 2, 1);
-insert into projects (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id) values ('Pseudoscleropodium Moss', 'ARCHIVED', 'Post Deployment Support', true, false, '2020-11-27 21:04:21', 'Online Store', '284.74', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-25 09:08:00', 2, 2);
-insert into projects (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id) values ('Attorney', 'DESIGN', 'Post Deployment Support', true, true, '2020-11-27 07:34:20', 'Blogging Platform', '211.59', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-12-05 05:45:56', 1, 3);
-insert into projects (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id) values ('Wand Blackroot', 'FINISHED', 'Post Deployment Support', false, false, '2020-12-25 15:24:03', 'Online Store', '223.53', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-29 21:53:09', 1, 4);
-insert into projects (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id) values ('Hartweg''s Sundrops', 'FINISHED', 'Documentation', false, true, '2021-01-15 03:47:56', 'Online Store', '283.52', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-19 08:12:57', 2, 5);
+insert into projects
+    (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id)
+values
+    ('Hartweg''s Sundrops', 'INITIAL', 'Documentation', false, false, '2021-01-15 03:47:56', 'Online Store', '283.52', '', '2020-10-19 08:12:57', 2, '2190f1c9-bb49-4182-8baa-6c17ce6e6a86');
+
+insert into projects
+    (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id)
+values
+    ('Podargus strigoides', 'DESIGN', 'Documentation', false, false, '2021-01-15 03:47:56', 'Online Store', '1000', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-19 08:12:57', 2, '568b9efb-972c-4cc8-835f-39ed58ad7451');
+
+insert into projects
+    (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id)
+values
+    ('Himantopus himantopus', 'PROGRESS', 'Documentation,Shopify', false, false, '2021-01-15 03:47:56', 'Online Store', '1000', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-19 08:12:57', 2, '0ff3f7ae-adfd-47bb-b15b-25c2a35f7e42');
+
+insert into projects
+    (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id)
+values
+    ('Tapirus terrestris', 'FINISHED', 'Documentation,Shopify', false, false, '2021-01-15 03:47:56', 'Single Product Store', '500', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-19 08:12:57', 2, '369176fb-1e56-44e2-96b1-9d218dc1ef66');
+
+insert into projects
+    (name, status, deliverables, admin_approval, client_approval, end_timeframe, type, price, proposal, date_created, user_id, id)
+values
+    ('Lorythaixoides concolor', 'ARCHIVED', 'Documentation,Shopify', false, false, '2021-01-15 03:47:56', 'Single Product Store', '500', 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION', '2020-10-19 08:12:57', 2, '485abe8f-a158-4c7a-b112-70cf2abf3c89');

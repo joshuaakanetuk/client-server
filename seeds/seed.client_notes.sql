@@ -1,10 +1,20 @@
-insert into notes (content, type, date_created, project_id, created_by) values ('Uraeginthus granatina', 'feedback', '2020-01-29 01:33:42', 2, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Antilope cervicapra', 'note', '2020-01-04 23:35:55', 2, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Butorides striatus', 'changelog', '2019-11-07 09:52:40', 2, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Haematopus ater', 'changelog', '2019-10-01 05:08:50', 2, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Ciconia episcopus', 'note', '2019-11-08 01:52:11', 1, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Paradoxurus hermaphroditus', 'note', '2020-05-07 07:41:52', 1, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Dicrostonyx groenlandicus', 'changelog', '2020-02-18 21:04:39', 1, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Ammospermophilus nelsoni', 'feedback', '2019-10-04 07:53:04', 2, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Trichoglossus haematodus moluccanus', 'note', '2019-12-12 19:00:01', 1, 'client');
-insert into notes (content, type, date_created, project_id, created_by) values ('Macaca fuscata', 'changelog', '2019-11-29 01:51:56', 2, 'client');
+insert into notes
+    (content, type, date_created, project_id, created_by)
+values
+    ('I''m Client approved', 'changelog', '2019-11-29 01:51:56', "2190f1c9-bb49-4182-8baa-6c17ce6e6a86", 'client');
+insert into notes
+    (content, type, date_created, project_id, created_by)
+values
+    ('I''m Client approved', 'changelog', '2019-11-29 01:51:56', "568b9efb-972c-4cc8-835f-39ed58ad7451", 'client');
+insert into notes
+    (content, type, date_created, project_id, created_by)
+values
+    ('I''m Client approved', 'changelog', '2019-11-29 01:51:56', "0ff3f7ae-adfd-47bb-b15b-25c2a35f7e42", 'client');
+insert into notes
+    (content, type, date_created, project_id, created_by)
+values
+    ('I''m Client approved', 'changelog', '2019-11-29 01:51:56', "369176fb-1e56-44e2-96b1-9d218dc1ef66", 'client');
+insert into notes
+    (content, type, date_created, project_id, created_by)
+values
+    ('I''m Client approved', 'changelog', '2019-11-29 01:51:56', "485abe8f-a158-4c7a-b112-70cf2abf3c89", 'client');
