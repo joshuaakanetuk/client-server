@@ -42,7 +42,7 @@ projectsRouter
       name,
       status,
       admin_approval,
-      client_approval: false,
+      client_approval,
       end_timeframe,
       type,
       price,
@@ -112,38 +112,36 @@ projectsRouter
       date_created,
     };
 
-   
-
     newProject = keys;
-
 
     if (typeof approval != "undefined") {
       project[req.user.type + "_approval"] = approval;
-      newProject[req.user.type + "_approval"] = project[req.user.type + "_approval"]
-    }
-    if (project.status === "INITIAL" || project.status === "DESIGN") {
-      if (!approval) {
-        newProject.status = "ARCHIVED";
-        newProject.client_approval = false;
-        newProject.admin_approval = false;
-      } else {
-        if (project.client_approval && project.admin_approval) {
-          if (project.status === "INITIAL") {
-            newProject.status = "DESIGN";
-          } else if (project.status === "DESIGN") {
-            newProject.status = "PROGRESS";
+      newProject[req.user.type + "_approval"] =
+        project[req.user.type + "_approval"];
+      if (project.status === "INITIAL" || project.status === "DESIGN") {
+        if (!approval) {
+          newProject.status = "ARCHIVED";
+          newProject.client_approval = false;
+          newProject.admin_approval = false;
+        } else {
+          if (project.client_approval && project.admin_approval) {
+            if (project.status === "INITIAL") {
+              newProject.status = "DESIGN";
+            } else if (project.status === "DESIGN") {
+              newProject.status = "PROGRESS";
+            }
+            newProject.client_approval = null;
+            newProject.admin_approval = null;
           }
-          newProject.client_approval = null;
-          newProject.admin_approval = null;
         }
-      }
-    } else {
-      if (project.status === "PROGRESS" && project.admin_approval) {
-        newProject.status = "FINISHED";
+      } else {
+        if (project.status === "PROGRESS" && project.admin_approval) {
+          newProject.status = "FINISHED";
+        }
       }
     }
 
-    console.log(newProject)
+    console.log(newProject);
 
     // Checking submitted object for length, user type
 
@@ -158,21 +156,20 @@ projectsRouter
       });
     }
 
-    if(req.user.type === 'client' && proposal) {
+    if (req.user.type === "client" && proposal) {
       return res.status(400).json({
         error: {
-          message: `Client cannot edit proposal url.`
+          message: `Client cannot edit proposal url.`,
         },
       });
-     }
+    }
 
     // removes superfluous keys
     Object.keys(newProject).forEach((key) =>
       newProject[key] === undefined ? delete newProject[key] : {}
     );
 
-
-    console.log(newProject)
+    console.log(newProject);
     ProjectsService.updateProject(
       req.app.get("db"),
       req.params.project_id,
@@ -197,20 +194,19 @@ projectsRouter
   })
   .post(jsonParser, (req, res, next) => {
     if (req.body.content.length > 0) {
-      req.body.created_by = req.user.id;
+      req.body.created_by = req.user.user_name;
 
-    if (req.body.type === 'changelog')
-      req.body.content = req.user.full_name + " " + req.body.content
+      if (req.body.type === "changelog")
+        req.body.content = req.user.full_name + " " + req.body.content;
 
       NotesService.insertNote(req.app.get("db"), req.body)
         .then((notes) => {
-          console.log(notes)
+          console.log(notes);
           res.status(201).json(notes);
         })
         .catch(next);
-    }
-    else {
-      res.status(204).send()
+    } else {
+      res.status(204).send();
     }
   })
   .delete(jsonParser, (req, res, next) => {
