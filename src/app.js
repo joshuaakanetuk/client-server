@@ -15,13 +15,10 @@ const app = express();
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
-//https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVJ5VEFG3BxeW7vS4fEvQjq%2FAgency%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION
-
 app.use(morgan(morganOption));
 const corsOptions = {
   "origin": CLIENT_ORIGIN,
-  "methods": "GET, HEAD, PUT, PATCH, POST, DELETE",
-  // other options
+  "methods": "GET, HEAD, PUT, PATCH, POST, DELETE"
 }
 
 app.use(cors(corsOptions));

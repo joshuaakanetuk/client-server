@@ -8,6 +8,7 @@ const projectsRouter = express.Router();
 const jsonParser = express.json();
 const { requireAuth } = require("../middleware/jwt-auth");
 
+// used to route project requests
 projectsRouter
   .route("/")
   .all(requireAuth)
@@ -52,7 +53,7 @@ projectsRouter
       user_id: req.user.id,
     };
 
-
+    // validation for proper data model
     for (const [key, value] of Object.entries(newProject)) {
       if (value == null || value == undefined) {
         return res.status(400).json({
@@ -61,9 +62,21 @@ projectsRouter
       }
     }
 
+    // validation for deliverables
+    const compareDelivery = deliverables.split(",");
+
+    if (compareDelivery === undefined || compareDelivery.length == 0) {
+      return res.status(400).json({
+        error: { message: `Needs a deliverable` },
+      });
+    }
+
+    // validation for date time
     if (!(new Date(end_timeframe) > new Date())) {
       return res.status(400).json({
-        error: { message: `Invalid date for project.` },
+        error: {
+          message: `Invalid date for project. Needs to be in the future.`,
+        },
       });
     }
 
@@ -120,7 +133,9 @@ projectsRouter
     };
 
     newProject = keys;
-
+    // statusSwitcher™️ — When both admin & client approve the current state 
+    // it moves to the next one. INITIAL -> DESIGN -> PROGRESS -> FINISHED -> ARCHIVED
+    // Client can only affect INITAL and DESIGN
     if (typeof approval != "undefined") {
       project[req.user.type + "_approval"] = approval;
       newProject[req.user.type + "_approval"] =
@@ -160,7 +175,7 @@ projectsRouter
         },
       });
     }
-
+    // validation for proposal 
     if (req.user.type === "client" && proposal) {
       return res.status(400).json({
         error: {
@@ -220,7 +235,6 @@ projectsRouter
       .catch(next);
   });
 
-/* async/await syntax for promises */
 async function checkProjectExists(req, res, next) {
   try {
     const project = await ProjectsService.getById(

@@ -4,6 +4,7 @@ const { requireAuth } = require('../middleware/jwt-auth')
 
 const notesRouter = express.Router();
 
+// not used entirely much, but gets all notes/single notes
 notesRouter.route("/").get(requireAuth, (req, res, next) => {
   NotesService.getAllNotes(req.app.get("db"))
     .then((notes) => {
@@ -24,7 +25,6 @@ notesRouter
       .catch(next);
   });
 
-/* async/await syntax for promises */
 async function checkNotesExists(req, res, next) {
   try {
     const note = await NotesService.getById(

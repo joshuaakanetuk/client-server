@@ -6,6 +6,7 @@ const usersRouter = express.Router();
 const jsonBodyParser = express.json();
 const { requireAuth } = require('../middleware/jwt-auth')
 
+// used to route user requests
 usersRouter
   .post("/", jsonBodyParser, (req, res, next) => {
     const { password, user_name, full_name, email, type } = req.body;

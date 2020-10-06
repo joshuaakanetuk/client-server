@@ -1,5 +1,7 @@
 const AuthService = require("../auth/auth-service");
 
+
+// middleware to make sure all requests have auth tokens 
 function requireAuth(req, res, next) {
   const authToken = req.get("Authorization") || "";
 
