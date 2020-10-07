@@ -11,7 +11,7 @@ describe("Project Endpoints", function () {
   before("make knex instance", () => {
     db = knex({
       client: "pg",
-      connection: process.env.TEST_DB_URL,
+      connection: process.env.TEST_DATABASE_URL,
     });
     app.set("db", db);
   });
@@ -59,27 +59,6 @@ describe("Project Endpoints", function () {
           .expect(200, expectedProjects);
       });
     });
-
-    //   context(`Given an XSS attack article`, () => {
-    //     const testUser = helpers.makeUsersArray()[1];
-    //     const { maliciousArticle, expectedArticle } = helpers.makeMaliciousArticle(
-    //       testUser
-    //     );
-
-    //     beforeEach("insert malicious article", () => {
-    //       return helpers.seedMaliciousArticle(db, testUser, maliciousArticle);
-    //     });
-
-    //     it("removes XSS attack content", () => {
-    //       return supertest(app)
-    //         .get(`/api/articles`)
-    //         .expect(200)
-    //         .expect((res) => {
-    //           expect(res.body[0].title).to.eql(expectedArticle.title);
-    //           expect(res.body[0].content).to.eql(expectedArticle.content);
-    //         });
-    //     });
-    //   });
   });
 
   describe(`POST /api/projects`, () => {
@@ -92,17 +71,15 @@ describe("Project Endpoints", function () {
       const testProject = testProjects[0];
       const testUser = testUsers[0];
       const newProject = {
-        id: "ee823dfe-276d-47fa-9ef6-58c881182d8f",
         name: "A NEW THING",
         status: "INITAL",
         deliverables: "Shopify",
         admin_approval: true,
         client_approval: false,
-        end_timeframe: "2020-04-24T20:12:43.000Z",
+        end_timeframe: '2020-12-29T17:42:17.000Z',
         type: "Portfolio",
         price: 123704,
         date_created: "2020-04-29T17:42:17.000Z",
-        date_modified: "2020-09-21T20:49:39.121Z",
         proposal: "",
         user_id: testUser.id,
       };
@@ -120,7 +97,6 @@ describe("Project Endpoints", function () {
           expect(res.body.client_approval).to.eql(newProject.client_approval);
           expect(res.body.type).to.eql(newProject.type);
           expect(res.body.price).to.eql(newProject.price);
-          expect(res.body.date_modified).to.eql(newProject.date_modified);
           expect(res.body.proposal).to.eql(newProject.proposal);
           expect(res.body.user_id).to.eql(testUser.id);
           assert(
@@ -210,7 +186,7 @@ describe("Project Endpoints", function () {
         helpers.seedProjectTables(db, testUsers, testProjects, testNotes)
       );
 
-      it("responds with 202 and the specified project (admin)", () => {
+      it("responds with 200 and the specified project (admin)", () => {
         const projectId = 1;
         const expectedProject = helpers.makeExpectedProject(
           testUsers,
@@ -225,10 +201,10 @@ describe("Project Endpoints", function () {
           .patch(`/api/projects/${testProjects[projectId - 1].id}`)
           .set("authorization", helpers.makeAuthHeader(testUsers[1]))
           .send(updatedProject)
-          .expect(202, expectedProject);
+          .expect(200, expectedProject);
       });
 
-      it("responds with 202 and the specified project (client)", () => {
+      it("responds with 200 and the specified project (client)", () => {
         const projectId = 1;
         const expectedProject = helpers.makeExpectedProject(
           testUsers,
@@ -243,7 +219,7 @@ describe("Project Endpoints", function () {
           .patch(`/api/projects/${testProjects[projectId - 1].id}`)
           .set("authorization", helpers.makeAuthHeader(testUsers[1]))
           .send(updatedProject)
-          .expect(202, expectedProject);
+          .expect(200, expectedProject);
       });
     });
   });

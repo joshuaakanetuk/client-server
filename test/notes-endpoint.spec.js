@@ -11,7 +11,7 @@ describe("Notes Endpoints", function () {
   before("make knex instance", () => {
     db = knex({
       client: "pg",
-      connection: process.env.TEST_DB_URL,
+      connection: process.env.TEST_DATABASE_URL,
     });
     app.set("db", db);
   });
@@ -23,7 +23,7 @@ describe("Notes Endpoints", function () {
   afterEach("cleanup", () => helpers.cleanTables(db));
 
   describe(`POST /api/project_id/notes`, () => {
-    beforeEach("insert articles", () =>
+    beforeEach("insert projects", () =>
       helpers.seedProjectTables(db, testUsers, testProjects)
     );
     it(`creates an note, responding with 201 and the new note`, function () {
@@ -35,7 +35,7 @@ describe("Notes Endpoints", function () {
           "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
         type: "notes",
         date_created: "2019-12-04T19:46:15.000Z",
-        created_by: testUser.id,
+        created_by: testUser.type,
         project_id: testProject.id,
       };
 
@@ -52,7 +52,7 @@ describe("Notes Endpoints", function () {
             new Date(res.body.date_created).getTime(),
             new Date(newNote.date_created)
           );
-          expect(Number(res.body.created_by)).to.eql(newNote.created_by);
+          expect((res.body.created_by)).to.eql(newNote.created_by);
           expect(res.body.project_id).to.eql(newNote.project_id);
         })
         .expect((res) =>
@@ -64,7 +64,7 @@ describe("Notes Endpoints", function () {
             .then((row) => {
               expect(row.content).to.eql(newNote.content);
               expect(row.type).to.eql(newNote.type);
-              expect(Number(row.created_by)).to.eql(newNote.created_by);
+              expect((row.created_by)).to.eql(newNote.created_by);
               expect(row.project_id).to.eql(newNote.project_id);
               assert(
                 new Date(row.date_created).getTime(),

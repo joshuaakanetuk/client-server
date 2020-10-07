@@ -98,7 +98,7 @@ function makeNotesArray(users, projects) {
         "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
       type: "notes",
       date_created: "2019-12-04T19:46:15.000Z",
-      created_by: users[1].id,
+      created_by: users[1].type,
       project_id: projects[0].id,
     },
     {
@@ -107,7 +107,7 @@ function makeNotesArray(users, projects) {
         "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
       type: "changelog",
       date_created: "2020-05-22T21:44:30.000Z",
-      created_by: users[0].id,
+      created_by: users[0].type,
       project_id: projects[1].id,
     },
     {
@@ -116,7 +116,7 @@ function makeNotesArray(users, projects) {
         "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
       type: "notes",
       date_created: "2020-07-25T15:25:19.000Z",
-      created_by: users[0].id,
+      created_by: users[0].type,
       project_id: projects[1].id,
     },
   ];

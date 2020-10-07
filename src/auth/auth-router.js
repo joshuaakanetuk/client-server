@@ -10,13 +10,19 @@ const jsonBodyParser = express.json();
 authRouter.post("/login", jsonBodyParser, (req, res, next) => {
   const { user_name, password } = req.body;
   const loginUser = { user_name, password };
+  var errvar = '';
 
   // if missing username or pass
   for (const [key, value] of Object.entries(loginUser))
-    if (value == null)
+    if (value == null) {
+     
+      if(key === user_name) errvar = "username."
+      else if(key === password) errvar = "password."
+
       return res.status(400).json({
-        error: `Missing '${key}'`,
+        error: `Missing '${errvar}'`,
       });
+    }
 
   AuthService.getUserWithUserName(req.app.get("db"), loginUser.user_name)
     .then((dbUser) => {
